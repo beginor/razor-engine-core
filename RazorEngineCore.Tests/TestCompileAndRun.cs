@@ -456,7 +456,7 @@ void RecursionTest(int level)
 	{
 		return;
 	}
-		
+
     <div>LEVEL: @level</div>
 	@{ RecursionTest(level - 1); }
 }
@@ -736,8 +736,7 @@ namespace TestAssembly
             using (CancellationTokenSource cancellationSource = new CancellationTokenSource())
             {
                 cancellationSource.Cancel();
-
-                Assert.ThrowsException<OperationCanceledException>(() =>
+                Assert.Throws<OperationCanceledException>(() =>
                 {
                     _ = razorEngine.Compile("Hello @Model.Name", cancellationToken: cancellationSource.Token);
                 });
@@ -752,7 +751,7 @@ namespace TestAssembly
             {
                 cancellationSource.Cancel();
 
-                await Assert.ThrowsExceptionAsync<OperationCanceledException>(async () =>
+                await Assert.ThrowsAsync<OperationCanceledException>(async () =>
                 {
                     _ = await razorEngine.CompileAsync("Hello @Model.Name", cancellationToken: cancellationSource.Token);
                 });
@@ -767,7 +766,7 @@ namespace TestAssembly
             {
                 cancellationSource.Cancel();
 
-                Assert.ThrowsException<OperationCanceledException>(() =>
+                Assert.Throws<OperationCanceledException>(() =>
                 {
                     _ = razorEngine.Compile<TestTemplate1>("Hello @A @B @(A + B) @C @Decorator(\"777\")", cancellationToken: cancellationSource.Token);
                 });
@@ -782,7 +781,7 @@ namespace TestAssembly
             {
                 cancellationSource.Cancel();
 
-                await Assert.ThrowsExceptionAsync<OperationCanceledException>(async () =>
+                await Assert.ThrowsAsync<OperationCanceledException>(async () =>
                 {
                     _ = await razorEngine.CompileAsync<TestTemplate1>("Hello @A @B @(A + B) @C @Decorator(\"777\")", cancellationToken: cancellationSource.Token);
                 });
@@ -943,19 +942,19 @@ Hello @Model.Decorator(Model.C)
             RazorEngine razorEngine = new RazorEngine();
             IRazorEngineCompiledTemplate<RazorEngineTemplateBase<TestModel>> template = razorEngine.Compile<RazorEngineTemplateBase<TestModel>>(templateText);
 
-            Assert.ThrowsException<RazorEngineException>(() =>
+            Assert.Throws<RazorEngineException>(() =>
             {
                 template.EnableDebugging();
             });
         }
 
         [TestMethod]
-        public void TestCompileAndRun_Anonymous_EnabledDebuggingThrowsException()
+        public void TestCompileAndRun_Anonymous_EnabledDebuggingThrows()
         {
             RazorEngine razorEngine = new RazorEngine();
             IRazorEngineCompiledTemplate template = razorEngine.Compile("<h1>Hello @Model.Name</h1>");
 
-            Assert.ThrowsException<RazorEngineException>(() =>
+            Assert.Throws<RazorEngineException>(() =>
             {
                 template.EnableDebugging();
             });
