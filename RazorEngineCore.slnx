@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Pack.ps1" />
+  </Folder>
+  <Project Path="ExampleAppCore/ExampleAppCore.csproj" />
+  <Project Path="ExampleAppNet472/ExampleAppNET472.csproj" />
+  <Project Path="ExampleAppNET5/ExampleAppNET5.csproj" />
+  <Project Path="RazorEngineCore.Tests/RazorEngineCore.Tests.csproj" />
+  <Project Path="RazorEngineCore/RazorEngineCore.csproj" />
+</Solution>
